@@ -11,17 +11,27 @@
 <body onload="initGame()">
 
     <div class="container center">
-        
-        <div class="lvl-btns center"></div>
-        <button class="new-game " onclick="newGame()"></button>
-        <div class="info-line"></div>
+        <div class="top-btns center">
+            <button onclick="getDiffucultyLevel(4)">EASY</button>
+            <button onclick="getDiffucultyLevel(8)">MEDIUM</button>
+            <button onclick="getDiffucultyLevel(16)">EXPERT</button>
+            <div class="score inline">Score</div>
+        </div>
 
 
-        <table class="table center" border="2" >
+        <button class="new-game" onclick="newGame()"></button>
+        <div class="center">
+            <img style="width:30px;" class="hint-btn inline" onclick="getHint(gBoard,this)" src="../images/hint.png"></img>
+            <img style="width:30px;" class="hint-btn inline" onclick="getHint(gBoard,this)" src="../images/hint.png"></img>
+            <img style="width:30px;" class="hint-btn inline" onclick="getHint( gBoard,this)" src="../images/hint.png"></img>
+            <div class="inline">TIME: <span id="time-min"></span><span id="time-sec"></span> </div>
+        </div>
+
+        <table  class="table center" border="2" >
             <tbody class="board"></tbody>
         </table>
 
-        <div class="timer"></div>
+        <div class="timer inline"></div>
     </div>
 
 
