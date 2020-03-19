@@ -11,12 +11,13 @@
 <body onload="initGame()">
 
     <div class="container center">
-        <div>TIME: <span id="time-min">00</span>:<span id="time-sec">00</span> </div>
+        
         <div class="lvl-btns center"></div>
-        <button class="new-game " onclick="newGame()">New Game</button>
+        <button class="new-game " onclick="newGame()"></button>
+        <div class="info-line"></div>
 
 
-        <table class="table center" border="2" cellpadding="10">
+        <table class="table center" border="2" >
             <tbody class="board"></tbody>
         </table>
 
@@ -25,7 +26,6 @@
 
 
     <script src="js/util.js"></script>
-
     <script src="js/app.js"></script>
 </body>
 
