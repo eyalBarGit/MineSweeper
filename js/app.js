@@ -1,15 +1,15 @@
 'use-strict';
 //TODOS:
-/**
- * step 3, 3 = Implement that clicking a cell with “number” reveals the number of this cell
- * Furthur task - Make sure the first clicked cell is never a mine (like in the real game), the empty cell becomes a num
- * 
- * 
-*/
+// HINT SECTION
+// FIX THE HINT BUG - ITS COVERING CELLS I'VE ALREADY CLICKED ON
+// FIX THE GUI
+// FIX THE COUNTER
 
 
 
 
+// const MINE_IMG = '☠'
+const MINE = 'X'
 const CELL_COVERED = `<img class="cell-size" src="../images/coverd.png"></img>`;
 const CELL_EMPTY = `<img class="cell-size" src="../images/0.png"></img>`;
 const CELL_MINE = `<img class="cell-size" src="../images/bomb.png"></img>`;
@@ -21,8 +21,6 @@ const CELL_FIVE_AROUND = `<img class="cell-size" src="../images/5.png"></img>`;
 const CELL_SIX_AROUND = `<img class="cell-size" src="../images/6.png"></img>`;
 const CELL_SEVEN_AROUND = `<img class="cell-size" src="../images/7.png"></img>`;
 const CELL_EIGHT_AROUND = `<img class="cell-size" src="../images/8.png"></img>`;
-const SMILEY_FACE = `<img style="width:35px" src="../images/Happy_face.png"</img>`
-const SCARED_FACE = `<img style="width:35px" src="../images/Scared_ face.png"</img>`
 // const HINT_BUTTONS = `<th class="hint-btns center"><img style="width:30px;" 
 // class="hint-btn" onclick="getHint(gBoard)" src="../images/hint.png"></img>
 // <lable>only ${gHintCounter} hints left</lable>
@@ -40,20 +38,19 @@ var gClickCounter = 0;
 var gWatch;
 var gHint = false;
 var gHintedCells = [];
-var gHintCounter = 3;
+var gHintCounter=3;
 var gCellContent;
-var gBtn;
 
 
 /********************************************* -  Initialize the game - ****************************************/
 function initGame() {
     gBoard = buildBoard(4);
     gClickCounter = 0;
-    gHintCounter =3
+    
     renderBoard(gBoard);
-    // console.log(gBoard);
-
-
+    console.log(gBoard);
+    
+    
     renderlevelDifficulty();
 }
 
@@ -64,7 +61,7 @@ function initGame() {
 function getDiffucultyLevel(elRadioBtn) {
     gLevel.SIZE = elRadioBtn.value;
     gGameLvl = gLevel.SIZE;
-
+    
 }
 
 
@@ -82,15 +79,15 @@ function renderlevelDifficulty() {
     `
     var lvlBtn = document.querySelector('.lvl-btns');
     lvlBtn.innerHTML = strHtml;
-
+    
 }
 
-// function setGlevel(size, mines) {
-//     gLevel = {
-//         SIZE: size,
-//         MINES: mines
-//     };
-// }
+function setGlevel(size, mines) {
+    gLevel = {
+        SIZE: size,
+        MINES: mines
+    };
+}
 
 
 // Root the number to divide it to cells
@@ -122,60 +119,51 @@ function buildBoard(Length) {
 function createMines(board) {
     var amount = 0;
     if (gBoard.length === 4) {
-
+        
         amount = 2
     } if (gBoard.length === 8) {
-
+        
         amount = 12
     } if (gBoard.length === 12) {
-
+        
         amount = 30
     }
-
+    
     for (var i = 0; i < amount; i++) {
         var count = 0;
         while (count < gLevel.MINES) {
             var iMine = getRandomInt(0, board.length - 1)
             var jMine = getRandomInt(0, board.length - 1)
-
+            
             if (!board[iMine][jMine].isMine && !board[iMine][jMine].isShown) {
                 count++
                 board[iMine][jMine].isMine = true
             }
         }
-
-
+        
+        
     }
 }
 
-/************************************************* - TOP LINE OF SCORE AND HINT- *****************************************/
-function createLine() {
-
+/************************************************* - TOP LINE OF SCORE - *****************************************/
+function createLine(){
+    
     var strHtml = '';
-    strHtml += `<div class "center">
-    <img style="width:30px;" class="hint-btn inline" onclick="getHint(gBoard),deleteBtn(this)" src="../images/hint.png"></img>
-    <img style="width:30px;" class="hint-btn inline" onclick="getHint(gBoard),deleteBtn(this)" src="../images/hint.png"></img>
-    <img style="width:30px;" class="hint-btn inline" onclick="getHint( gBoard),deleteBtn(this)" src="../images/hint.png"></img>
-    <div class="inline">TIME: <span id="time-min"></span><span id="time-sec"></span> </div>
+    strHtml += `<div class "hint-btns center"><img style="width:30px;" 
+    class="hint-btn" onclick="getHint(gBoard)" src="../images/hint.png"></img>
+    <div>TIME: <span id="time-min"></span><span id="time-sec"></span> </div>
     </div>`
-
+    
     var infoLine = document.querySelector('.info-line');
     infoLine.innerHTML = strHtml;
 }
-
-
-function deleteBtn(elBtn){
-elBtn.classList.add('hidden')
-renderBoard(gBoard)
-}
-
 
 /************************************************* - Render the board - *****************************************/
 function renderBoard(board) {
     createLine()
     var strHtml = '';
-
-
+    
+    
     for (var i = 0; i < board.length; i++) {
         var row = board[i];
         strHtml += '<tr>';
@@ -213,7 +201,7 @@ function renderBoard(board) {
                     if (cell.minesAroundCount === 8) {
                         strHtml += `<td id="cell-${i}-${j}" class="" onclick="cellClicked(this,${i},${j})">${CELL_EIGHT_AROUND}</td>`
                     }
-
+                    
                 }
             } else {
                 strHtml += `<td id="cell-${i}-${j}" class="" onclick="cellClicked(this,${i},${j})"> ${CELL_COVERED} </td>`
@@ -225,75 +213,51 @@ function renderBoard(board) {
     elMat.innerHTML = strHtml;
 }
 
-gBtn = document.querySelector('.new-game');
-gBtn.innerHTML = `${SMILEY_FACE}`
 
 
 /********************************************************** - Cells - *********************************************/
 function cellClicked(elCell, i, j) {
-    gBtn.innerHTML = `${SCARED_FACE}`
-    setTimeout(changeSmileyIcon,140);
     var clickSound = new Audio('/audio/click.wav');
     var explosion = new Audio("/audio/Explosion.mp3");
     gClickCounter++
-    if (gClickCounter === 1) {
-
+    if(gClickCounter ===1){
+        
         startWatch()
     }
     startMining();
-
+    
     cell = gBoard[i][j];
     if (!gHint) {
         if (!cell.isMine) {
-            // if(cell.minesAroundCount === 0){
-            //     gCellContent = CELL_EMPTY
-
-            // }
+            if(cell.minesAroundCount === 0){
+                
+                //   gCellContent = CELL_EMPTY;
+                
+            }
             // if(cell.minesAroundCount === 1){
-            //     gCellContent = CELL_ONE_AROUND;
+                // gCellContent = CELL_ONE_AROUND;
             // }
-            // if(cell.minesAroundCount === 2){
-            //     gCellContent = CELL_TWO_AROUND;
-            // }
-            // if(cell.minesAroundCount === 3){
-            //     gCellContent = CELL_THREE_AROUND;
-            // }
-            // if(cell.minesAroundCount === 4){
-            //     gCellContent = CELL_FOUR_AROUND;
-            // }
-            // if(cell.minesAroundCount === 5){
-            //     gCellContent = CELL_FIVE_AROUND;
-            // }
-            // if(cell.minesAroundCount === 6){
-            //     gCellContent = CELL_SIX_AROUND;
-            // }
-            // if(cell.minesAroundCount === 7){
-            //     gCellContent = CELL_SEVEN_AROUND;
-            // }
-            // if(cell.minesAroundCount === 8){
-            //     gCellContent = CELL_EIGHT_AROUND;
-            // }
-
             clickSound.play()
         }
         cell.isShown = true;
         if (cell.isMine) {
-            gCellContent = CELL_MINE;
+            // gCellContent = CELL_MINE;
             explosion.play()
             GameOver();
         }
-
-        // gBtn.innerHTML = `${SMILEY_FACE}`
+        
     } else {
         gHint = true;
         clickSound.play()
-        getMinesLocation(i, j, gBoard)
-        // setTimeout(revealCards, 1000)
+        revealCards(i, j, gBoard)
+        setTimeout(hideCards, 1000)
     }
-    renderBoard(gBoard);
-
-    // renderCell({i: i, j: j },gCellContent)
+    // renderBoard(gBoard);
+    var imgSrc = `<img class="cell-size" src="${cell.minesAroundCount}.jpg`;
+    gCellContent = imgSrc;
+    renderCell({i: i, j: j },gCellContent)
 }
+
 
 
 /*************************************************************************************************************/
@@ -304,13 +268,16 @@ function cellMarked(elCell) {
 
 
 
+function expandShown(board, elCell, i, j) {
+
+
+
+
+}
 
 
 function newGame() {
-    gBtn.innerHTML = `${SCARED_FACE}`
-    setTimeout(changeSmileyIcon,140);
-    clearInterval(gWatch)
-    gHintCounter =3
+
     gBoard = buildBoard(getSquareRoot(gGameLvl));
     gClickCounter = 0
     // createMines(gBoard);
@@ -330,12 +297,12 @@ function checkGameOver() {
 
 
 function GameOver() {
-
+    
     console.log('game over');
     setTimeout(initGame, 500)
-    clearInterval(gWatch)
-    gClickCounter = 0
-    gHintCounter = 3
+clearInterval(gWatch)
+gClickCounter = 0
+
 }
 
 
@@ -358,7 +325,7 @@ function startWatch() {
     var startTime = Date.now();
     gWatch = setInterval(function () {
         var currTime = Date.now();
-        var totalTime = Math.round((currTime - startTime) / 1000);
+        var totalTime = Math.floor((currTime - startTime)  / 1000);
         renderTime(totalTime);
     }, 1000);
 }
@@ -375,9 +342,9 @@ function startMining() {
     }
 }
 
-function getHint( board) {
-    if (gHintCounter >= 0) {
-
+function getHint(board) {
+    if(gHintCounter>=0){
+        
         gHintCounter--
         gHint = true
         for (let i = 0; i < board.length; i++) {
@@ -388,13 +355,6 @@ function getHint( board) {
                     return
                 }
             }
-        }
     }
-   
-}
-
-
-function changeSmileyIcon(){
-
-    gBtn.innerHTML = `${SMILEY_FACE}`
+    }
 }

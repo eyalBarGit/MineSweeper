@@ -18,11 +18,3 @@
     border-collapse:collapse;
     /* margin:25px 0; */
 }
-
-.inline{
-    display: inline-block;
-}
-
-.hidden{
-    display:none;
-}
