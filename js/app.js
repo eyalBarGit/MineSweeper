@@ -10,22 +10,22 @@
 
 
 
-const CELL_COVERED = `<img class="cell-size" src="../images/coverd.png"></img>`;
-const CELL_EMPTY = `<img class="cell-size" src="../images/0.png"></img>`;
-const CELL_MINE = `<img class="cell-size" src="../images/bomb.png"></img>`;
-const CELL_ONE_AROUND = `<img class="cell-size" src="../images/1.png"></img>`;
-const CELL_TWO_AROUND = `<img class="cell-size" src="../images/2.png"></img>`;
-const CELL_THREE_AROUND = `<img class="cell-size" src="../images/3.png"></img>`;
-const CELL_FOUR_AROUND = `<img class="cell-size" src="../images/4.png"></img>`;
-const CELL_FIVE_AROUND = `<img class="cell-size" src="../images/5.png"></img>`;
-const CELL_SIX_AROUND = `<img class="cell-size" src="../images/6.png"></img>`;
-const CELL_SEVEN_AROUND = `<img class="cell-size" src="../images/7.png"></img>`;
-const CELL_EIGHT_AROUND = `<img class="cell-size" src="../images/8.png"></img>`;
-const CELL_FLAG = `<img class="cell-size" src="../images/flag.png"></img>`;
-const SMILEY_FACE = `<img style="width:35px" src="../images/Happy_face.png"</img>`
-const SCARED_FACE = `<img style="width:35px" src="../images/Scared_ face.png"</img>`
+const CELL_COVERED = `<img class="cell-size" src="images/coverd.png"></img>`;
+const CELL_EMPTY = `<img class="cell-size" src="images/0.png"></img>`;
+const CELL_MINE = `<img class="cell-size" src="images/bomb.png"></img>`;
+const CELL_ONE_AROUND = `<img class="cell-size" src="images/1.png"></img>`;
+const CELL_TWO_AROUND = `<img class="cell-size" src="images/2.png"></img>`;
+const CELL_THREE_AROUND = `<img class="cell-size" src="images/3.png"></img>`;
+const CELL_FOUR_AROUND = `<img class="cell-size" src="images/4.png"></img>`;
+const CELL_FIVE_AROUND = `<img class="cell-size" src="images/5.png"></img>`;
+const CELL_SIX_AROUND = `<img class="cell-size" src="images/6.png"></img>`;
+const CELL_SEVEN_AROUND = `<img class="cell-size" src="images/7.png"></img>`;
+const CELL_EIGHT_AROUND = `<img class="cell-size" src="images/8.png"></img>`;
+const CELL_FLAG = `<img class="cell-size" src="images/flag.png"></img>`;
+const SMILEY_FACE = `<img style="width:35px" src="images/Happy_face.png"</img>`
+const SCARED_FACE = `<img style="width:35px" src="images/Scared_ face.png"</img>`
 // const HINT_BUTTONS = `<th class="hint-btns center"><img style="width:30px;" 
-// class="hint-btn" onclick="getHint(gBoard)" src="../images/hint.png"></img>
+// class="hint-btn" onclick="getHint(gBoard)" src="images/hint.png"></img>
 // <lable>only ${gHintCounter} hints left</lable>
 // </th>`
 // console.log('gHintCounter ',gHintCounter)
