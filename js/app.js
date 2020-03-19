@@ -218,8 +218,8 @@ function cellClicked(elCell, i, j,e) {
     console.log(e)
     gBtn.innerHTML = `${SCARED_FACE}`
     setTimeout(changeSmileyIcon, 140);
-    var clickSound = new Audio('/audio/click.wav');
-    var explosion = new Audio("/audio/Explosion.mp3");
+    var clickSound = new Audio('audio/click.wav');
+    var explosion = new Audio("audio/Explosion.mp3");
     gClickCounter++
     if (gClickCounter === 1) {
         startMining()
