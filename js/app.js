@@ -11,21 +11,21 @@
 
 /********************************************* -   - ****************************************/
 
-const CELL_COVERED = `<img class="cell-size" src="../images/coverd.png"></img>`;
-const CELL_EMPTY = `<img class="cell-size" src="../images/0.png"></img>`;
-const CELL_MINE = `<img class="cell-size" src="../images/bomb.png"></img>`;
-const CELL_ONE_AROUND = `<img class="cell-size" src="../images/1.png"></img>`;
-const CELL_TWO_AROUND = `<img class="cell-size" src="../images/2.png"></img>`;
-const CELL_THREE_AROUND = `<img class="cell-size" src="../images/3.png"></img>`;
-const CELL_FOUR_AROUND = `<img class="cell-size" src="../images/4.png"></img>`;
-const CELL_FIVE_AROUND = `<img class="cell-size" src="../images/5.png"></img>`;
-const CELL_SIX_AROUND = `<img class="cell-size" src="../images/6.png"></img>`;
-const CELL_SEVEN_AROUND = `<img class="cell-size" src="../images/7.png"></img>`;
-const CELL_EIGHT_AROUND = `<img class="cell-size" src="../images/8.png"></img>`;
-const CELL_FLAG = `<img class="cell-size" src="../images/flag.png"></img>`;
-const SMILEY_FACE = `<img style="width:35px" src="../images/Happy_face.png"</img>`
-const SCARED_FACE = `<img style="width:35px" src="../images/Scared_ face.png"</img>`
-const SAD_FACE = `<img style="width:35px" src="../images/sadFace.png"</img>`
+const CELL_COVERED = `<img class="cell-size" src="images/coverd.png"></img>`;
+const CELL_EMPTY = `<img class="cell-size" src="images/0.png"></img>`;
+const CELL_MINE = `<img class="cell-size" src="images/bomb.png"></img>`;
+const CELL_ONE_AROUND = `<img class="cell-size" src="images/1.png"></img>`;
+const CELL_TWO_AROUND = `<img class="cell-size" src="images/2.png"></img>`;
+const CELL_THREE_AROUND = `<img class="cell-size" src="images/3.png"></img>`;
+const CELL_FOUR_AROUND = `<img class="cell-size" src="images/4.png"></img>`;
+const CELL_FIVE_AROUND = `<img class="cell-size" src="images/5.png"></img>`;
+const CELL_SIX_AROUND = `<img class="cell-size" src="images/6.png"></img>`;
+const CELL_SEVEN_AROUND = `<img class="cell-size" src="images/7.png"></img>`;
+const CELL_EIGHT_AROUND = `<img class="cell-size" src="images/8.png"></img>`;
+const CELL_FLAG = `<img class="cell-size" src="images/flag.png"></img>`;
+const SMILEY_FACE = `<img style="width:35px" src="images/Happy_face.png"</img>`
+const SCARED_FACE = `<img style="width:35px" src="images/Scared_ face.png"</img>`
+const SAD_FACE = `<img style="width:35px" src="images/sadFace.png"</img>`
 
 
 
@@ -236,8 +236,6 @@ gBtn.innerHTML = `${SMILEY_FACE}`
 
 function createMines(board) {
 
-
-
     for (var i = 0; i < gLevel.MINES; i++) {
 
         var iMine = getRandomInt(0, board.length - 1)
@@ -247,9 +245,6 @@ function createMines(board) {
 
             board[iMine][jMine].isMine = true
         }
-
-
-
     }
 }
 /**************************************************** - FIND  MINES  AND START MINING- **********************************************/
@@ -286,8 +281,8 @@ function cellClicked(elCell, i, j, ) {
     if (gGame.isOn) {
 
 
-        var clickSound = new Audio('/audio/click.wav');
-        var explosion = new Audio("/audio/Explosion.mp3");
+        var clickSound = new Audio('audio/click.wav');
+        var explosion = new Audio("audio/Explosion.mp3");
         gClickCounter++
         setTimeout(changeSmileyIcon, 140);
         gBtn.innerHTML = `${SCARED_FACE}`
