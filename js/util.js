@@ -35,7 +35,7 @@ function setMinesNegsCount(cellI, cellJ, mat) {
     for (var j = cellJ - 1; j <= cellJ + 1; j++) {
       if (i === cellI && j === cellJ) continue;
       if (j < 0 || j >= mat[i].length) continue;
-      if (!mat[i][j].isMine) {
+      if (!mat[i][j].isMine && !mat[i][j].isShown) {
         mat[i][j].minesAroundCount++
       }
     }
@@ -55,24 +55,21 @@ function renderCell(location, value) {
 
 function getMinesLocation(cellI, cellJ, mat) {
   for (var i = cellI - 1; i <= cellI + 1; i++) {
-    // if(mat[cellI][cellJ].isShown)continue;
     if (i < 0 || i >= mat.length) continue;
     for (var j = cellJ - 1; j <= cellJ + 1; j++) {
-      if (mat[i][j].isShown) continue;
+      if (mat[cellJ][cellJ].isShown) continue;
       if (j < 0 || j >= mat[i].length) continue;
       gHintedCells.push(mat[i][j])
     }
   }
   for (var i = 0; i < gHintedCells.length; i++) {
     gHintedCells[i].isShown = true
+    gGame.isOn = false;
   }
   setTimeout(hideCards, 1000);
 
 
 }
-
-
-
 
 
 function hideCards() {
@@ -83,9 +80,24 @@ function hideCards() {
   }
   gHintedCells = []
   gHint = false;
+  gGame.isOn = true;
   renderBoard(gBoard);
 }
 
+
+
+function initHintBtns() {
+  var btnsHint = document.querySelectorAll('.hint-btn');
+  for (var i = 0; i < btnsHint.length; i++) {
+
+      var btn = btnsHint[i];
+      btn.classList.remove('hidden')
+  }
+}
+// Check if game is over
+function checkGameOver() {
+
+}
 
 
 

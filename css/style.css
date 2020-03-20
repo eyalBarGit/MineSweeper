@@ -34,12 +34,23 @@
 }
 
 .top-btns {
-    background-color: lightblue;
-    width: 100%;
+    background-color: rgb(70, 173, 207);
+    width: 60%;
     height: 50px;
     /* margin: auto; */
 }
 
 .top-btns button {
     margin-top: 12px;
+}
+
+
+.game-over{
+    display:none;
+    width:400px;
+    height:500px;
+    margin-left:700px;
+    position:absolute;
+    background-color: pink;
+    transition: 1s ease-in-out;
 }
