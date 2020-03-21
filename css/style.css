@@ -107,7 +107,7 @@ body {
     margin-top: 50px;
     padding-top: 20px;
     background-color: rgba(84, 109, 117, 0.925);
-
+    height: 700px;
 }
 .lives{
     height:50px
@@ -123,8 +123,8 @@ body {
     transition: 0.3s ease-in-out;
 }
 .cell-size {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 .safe-to-click {
@@ -139,9 +139,6 @@ body {
     text-align: center;
     box-shadow: 22px 28px 52px #000000;
 }
-
-
-
 
 
 .win-modal {

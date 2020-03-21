@@ -275,7 +275,9 @@ function expandShown(board, cellI, cellJ) {
             if (board[i][j].minesAroundCount >= 0 && !board[i][j].isMine && !board[i][j].isShown) {
                 board[i][j].isShown = true;
                 gGame.shownCount++
-                renderBoard(gBoard)
+                if(board[cellI][cellJ].minesAroundCount <= 4 && !board[cellI][cellJ].isMine && !board[cellI][cellJ].isShown)
+                expandShown(gBoard, i, j);
+                // renderBoard(gBoard)
             }
 
         }
