@@ -133,7 +133,9 @@ body {
 
 .safe-to-click {
     position: relative;
-    margin: 10px 250px 0 250px;
+    /* margin: 10px 250px 0 250px; */
+    width:10vw;
+    margin:auto;
     height: 40px;
     padding-top: 10px;
     transition: 0.2s ease-in-out;

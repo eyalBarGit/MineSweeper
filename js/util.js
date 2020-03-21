@@ -111,6 +111,7 @@ function win() {
   var elWinModal = document.querySelector('.win-modal');
   elWinModal.style.display = 'block';
   elWinModal.style.opacity = '1';
+  gBtn.innerHTML =`${WIN_FACE}`
 
 }
 

@@ -17,6 +17,7 @@ const CELL_FLAG = `${IMG_SRC}images/flag.png"></img>`;
 const SMILEY_FACE = `${IMG_SRC}images/Happy_face.png"</img>`
 const SCARED_FACE = `${IMG_SRC}images/Scared_ face.png"</img>`
 const SAD_FACE = `${IMG_SRC}images/sadFace.jpg"</img>`
+const WIN_FACE = `${IMG_SRC}images/win-smiley.png"</img>`
 
 
 
