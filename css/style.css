@@ -3,7 +3,6 @@
 }
 
 body {
-    /* background-image: url('/images/background.png'); */
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
@@ -81,7 +80,7 @@ body {
     padding-top: 10px;
     transition: 0.2s ease-in-out;
     background-color: rgba(67, 205, 223, 0.349);
-    border:1px solid yellowgreen;
+    border: 1px solid yellowgreen;
     font-size: 15px;
     text-align: center;
     box-shadow: 22px 28px 52px #000000;
@@ -104,7 +103,6 @@ body {
     text-decoration: none;
     text-shadow: 0px -1px 0px #2b665e;
     margin-bottom: 20px;
-    
 }
 
 .top-btns button:hover {
@@ -140,7 +138,7 @@ body {
     margin-left: 200px;
     margin-right: 200px;
     background-color: rgba(84, 109, 117, 0.925);
-    height:750px;
+    height: 750px;
 }
 
 .table {
@@ -153,10 +151,8 @@ body {
     height: 35px;
 }
 
-
 .hint-btn {
     position: relative;
-  
     margin-top: 10px;
     transition: 0.3s ease-in-out;
 }
@@ -225,7 +221,6 @@ body {
     opacity: 0.5;
 }
 
-
-.absolute{
+.absolute {
     position: absolute;
 }

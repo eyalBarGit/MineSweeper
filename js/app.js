@@ -38,16 +38,16 @@ function getHint(board, elBtn) {
             gHint = true
             var safeClick = document.querySelector('.safe-to-click');
             safeClick.style.opacity = 1;
-            setTimeout(clearModal,1500)
+            setTimeout(clearModal, 1500)
         }
     }
     // safeClick.style.display = 'block';
-    
+
 }
 
 /**************************************************************************** - Build the board - **********************************************************/
 function buildBoard(Length) {
-    gCellCounter =0
+    gCellCounter = 0
     var board = [];
     for (var i = 0; i < Length; i++) {
         board[i] = [];
@@ -76,7 +76,7 @@ function renderBoard(board) {
             var cell = row[j];
             var className = '"cell"'
             var tdId = `<td id="cell-${i}-${j}"`
-        
+
             if (cell.isShown) {
                 if (cell.isMine) {
                     strHtml += `${tdId} class=${className}> ${CELL_MINE} </td>`
@@ -113,16 +113,16 @@ function renderBoard(board) {
 
                 }
             } else {
-                
-                if (!cell.isShown && !cell.isMarked){
-                    
+
+                if (!cell.isShown && !cell.isMarked) {
+
                     strHtml += `${tdId} class=${className} oncontextmenu="cellMarked(${i},${j})" onclick="cellClicked(this,${i},${j})"> ${CELL_COVERED} </td>`
                 }
-                else if((!cell.isShown && cell.isMarked)){
+                else if ((!cell.isShown && cell.isMarked)) {
 
                     strHtml += `${tdId} class=${className} oncontextmenu="cellMarked(${i},${j})" onclick="cellClicked(this,${i},${j})"> ${CELL_FLAG} </td>`
                 }
-                
+
 
             }
         }
@@ -146,7 +146,7 @@ function createMines(board, cellI, cellJ) {
         var jMine = getRandomInt(0, board.length - 1)
         if (cellI === iMine && cellJ === jMine) {
             iMine = getRandomInt(0, board.length - 1)
-             jMine = getRandomInt(0, board.length - 1)
+            jMine = getRandomInt(0, board.length - 1)
 
         }
 
@@ -181,21 +181,22 @@ function startMining(i, j) {
 
 /************************************************************************* - CLICKED CELLS - ************************************************************/
 function cellClicked(elCell, i, j) {
-    
+
     var cell = gBoard[i][j];
-    
+
+    var heart = document.querySelectorAll('.heart-lives')
     var clickSound = new Audio('audio/click.wav');
     var explosion = new Audio("audio/Explosion.mp3");
-    
+
     if (gGame.isOn) {
-        
+
         gBtn.innerHTML = `${SCARED_FACE}`
         if (gClickCounter === 0) {
             gClickCounter++
             startMining(i, j)
             startWatch()
         }
-        
+
         if (!gHint) {
             if (!cell.isMine) {
                 if (cell.minesAroundCount === 0) {
@@ -205,26 +206,50 @@ function cellClicked(elCell, i, j) {
                 clickSound.play()
                 gGame.shownCount++
                 renderScore()
-                
+
             }
             cell.isShown = true;
             if (cell.isMine) {
                 explosion.play()
-                gGame.isOn = false;
-                
-                GameOver();
+                // debugger
+                if (gLives > 0) {
+                    // debugger
+                    switch (gLives) {
+                        case 3:
+                            heart[2].style.display = 'none'
+                            gLives--
+                            break;
+                            case 2:
+                                gLives--
+                                heart[1].style.display = 'none'
+                                break;
+                                case 1:
+                                    heart[0].style.display = 'none'
+                                    gLives--
+                                        gGame.isOn = false;
+                    
+                                        setTimeout(GameOver, 500);
+                            break;
+                    }
+                }
+                //  else {
+                    
+                    //     gGame.isOn = false;
+    
+                    //     setTimeout(GameOver, 1500);
+                // }
             }
-            
+
         } else {
             getMinesLocation(i, j, gBoard)
         }
         setTimeout(changeSmileyIcon, 140);
         renderBoard(gBoard);
-        
+
     }
-    
+
     checkGameOver()
-    
+
 }
 
 
@@ -235,18 +260,18 @@ function cellMarked(i, j) {
     var cell = gBoard[i][j];
     if (!cell.isMarked) {
         cell.isMarked = true;
-        if(cell.isMine){
+        if (cell.isMine) {
             gGame.markedCount++;
         }
-       renderBoard(gBoard)
+        renderBoard(gBoard)
         return;
     }
-    if (cell.isMarked){
+    if (cell.isMarked) {
         cell.isMarked = false;
         gGame.markedCount--;
     }
     checkGameOver()
-renderBoard(gBoard)
+    renderBoard(gBoard)
 }
 
 
@@ -267,10 +292,10 @@ function expandShown(board, cellI, cellJ, elCell) {
                 board[i][j].isShown = true;
                 gGame.shownCount++
                 renderBoard(gBoard)
-                
-              
+
+
             }
-            
+
         }
     }
 }

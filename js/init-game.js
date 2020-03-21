@@ -20,7 +20,8 @@ var gHint = false;
 var gHintedCells = [];
 var gHintCounter;
 var gBtn;
-var gCellCounter =0;
+var gCellCounter = 0;
+var gLives = 3;
 
 /************************************************************* -  INITIALIZE THE GAME - *******************************************************/
 function initGame() {
@@ -34,10 +35,11 @@ function initGame() {
     gGame.shownCount = 0;
     gHint = false;
     gGame.secsPassed = 0;
+    gLives = 3;
     renderTime(gGame.secsPassed)
     renderScore()
     changeSmileyIcon()
-    clearModal ()
+    clearModal()
 }
 
 

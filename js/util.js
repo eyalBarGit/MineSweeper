@@ -49,9 +49,9 @@ function getMinesLocation(cellI, cellJ, mat) {
 
 }
 
-function hideCards(cellI,cellJ) {
+function hideCards(cellI, cellJ) {
   for (var i = 0; i < gHintedCells.length; i++) {
-    if(i === cellI && j === cellJ)continue;
+    if (i === cellI && j === cellJ) continue;
     var cell = gHintedCells[i];
     cell.isShown = false;
   }
@@ -65,8 +65,8 @@ function initHintBtns() {
   var btnsHint = document.querySelectorAll('.hint-btn');
   for (var i = 0; i < btnsHint.length; i++) {
 
-      var btn = btnsHint[i];
-      btn.classList.remove('hidden')
+    var btn = btnsHint[i];
+    btn.classList.remove('hidden')
   }
 }
 
@@ -77,35 +77,35 @@ function checkGameOver() {
 
   var cells = gCellCounter - gLevel.MINES;
 
-if(gGame.shownCount === cells){
-  win();
-}
+  if (gGame.shownCount === cells) {
+    win();
+  }
 
 }
 
 
-function renderScore(){
+function renderScore() {
   var score = document.querySelector('.score');
   score.innerHTML = `Score: ${gGame.shownCount}`
   score.style.color = 'white'
 }
 
 
-function showAllMines(board){
-for (var i = 0; i < board.length; i++) {
-  var row = board[i];
-  for (var j = 0; j < row.length; j++) {
-    var  cell = row[j];
-    if(cell.isMine){
-      cell.isShown = true;
-      renderBoard(gBoard);
+function showAllMines(board) {
+  for (var i = 0; i < board.length; i++) {
+    var row = board[i];
+    for (var j = 0; j < row.length; j++) {
+      var cell = row[j];
+      if (cell.isMine) {
+        cell.isShown = true;
+        renderBoard(gBoard);
 
+      }
     }
   }
 }
-}
 
-function win(){
+function win() {
   gGame.isOn = false;
   clearInterval(gTimer)
   var elWinModal = document.querySelector('.win-modal');
@@ -116,13 +116,13 @@ function win(){
 
 
 function changeSmileyIcon() {
-  if(gGame.isOn){
-  
-      gBtn.innerHTML = `${SMILEY_FACE}`
+  if (gGame.isOn) {
+
+    gBtn.innerHTML = `${SMILEY_FACE}`
   }
-  }
-  
-function clearModal (){
+}
+
+function clearModal() {
   var elWinModal = document.querySelector('.win-modal');
   elWinModal.style.display = 'none';
 
