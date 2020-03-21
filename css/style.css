@@ -1,17 +1,24 @@
+/*****************************************************************- INIT - *************************************************** */
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-repeat: no-repeat;
-    background-size: cover;
     overflow: hidden;
 }
 
-.main-container {
-    border-right: 20px solid black;
+.score {
+    font-size: 20px;
 }
 
+.border {
+    border-radius: 20px;
+}
+
+
+.absolute {
+    position: absolute;
+}
 .center {
     text-align: center;
     align-items: center;
@@ -41,8 +48,104 @@ body {
     background-color: red;
 }
 
+
+/******************************************************************** -  HTML CLASSES *******************************************/
+
+.main-container {
+    padding: 0 100px 0 100px;
+    margin: 50px 0 0 0;
+    position: relative;
+
+}
+
+.container {
+    position: relative;
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 55vw;
+    background-color: rgb(70, 68, 66);
+    height: 300px;
+    -moz-box-shadow: 22px 28px 5px #000000;
+    -webkit-box-shadow: 22px 28px 5px #000000;
+    box-shadow: 22px 28px 52px #000000;
+}
+
+.top-btns {
+ 
+    left: 0;
+}
+.top-btns button {
+    box-shadow: inset 0px 1px 3px 0px #91b8b3;
+    background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color: #768d87;
+    border-radius: 5px;
+    border: 1px solid #566963;
+    display: block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 11px 23px;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px #2b665e;
+    margin-top: 5px
+}
+
+.top-btns button:hover {
+    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color: #6c7c7c;
+}
+
+.top-btns button:active {
+    position: relative;
+    top: 1px;
+}
+
+.game-board {
+    margin-top: 50px;
+    padding-top: 20px;
+    background-color: rgba(84, 109, 117, 0.925);
+
+}
+.lives{
+    height:50px
+}
+.table {
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.hint-btn {
+    position: relative;
+    margin-top: 10px;
+    transition: 0.3s ease-in-out;
+}
+.cell-size {
+    width: 18px;
+    height: 18px;
+}
+
+.safe-to-click {
+    position: relative;
+    margin: 10px 250px 0 250px;
+    height: 40px;
+    padding-top: 10px;
+    transition: 0.2s ease-in-out;
+    background-color: rgba(67, 205, 223, 0.349);
+    border: 1px solid yellowgreen;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 22px 28px 52px #000000;
+}
+
+
+
+
+
 .win-modal {
-    position: absolute;
+ 
     width: 50vw;
     height: 20vh;
     left: 25vw;
@@ -58,7 +161,7 @@ body {
 }
 
 .game-over-modal {
-    position: absolute;
+  
     width: 50vw;
     height: 20vh;
     left: 25vw;
@@ -73,93 +176,9 @@ body {
     box-shadow: 22px 28px 52px #000000;
 }
 
-.safe-to-click {
-    position: relative;
-    margin: 10px 450px 0 450px;
-    height: 40px;
-    padding-top: 10px;
-    transition: 0.2s ease-in-out;
-    background-color: rgba(67, 205, 223, 0.349);
-    border: 1px solid yellowgreen;
-    font-size: 15px;
-    text-align: center;
-    box-shadow: 22px 28px 52px #000000;
-}
-
-.top-btns button {
-    margin-top: 50px;
-    box-shadow: inset 0px 1px 3px 0px #91b8b3;
-    background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
-    background-color: #768d87;
-    border-radius: 5px;
-    border: 1px solid #566963;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: Arial;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 11px 23px;
-    text-decoration: none;
-    text-shadow: 0px -1px 0px #2b665e;
-    margin-bottom: 20px;
-}
-
-.top-btns button:hover {
-    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
-    background-color: #6c7c7c;
-}
-
-.top-btns button:active {
-    position: relative;
-    top: 1px;
-}
-
-.score {
-    font-size: 20px;
-}
-
-.border {
-    border-radius: 20px;
-}
-
-.container {
-    padding-top: 20px;
-    margin: 0 200px 0 200px;
-    background-color: rgb(70, 68, 66);
-    height: 500px;
-    -moz-box-shadow: 22px 28px 5px #000000;
-    -webkit-box-shadow: 22px 28px 5px #000000;
-    box-shadow: 22px 28px 52px #000000;
-}
-
-.game-board {
-    margin-top: 100px;
-    margin-left: 200px;
-    margin-right: 200px;
-    background-color: rgba(84, 109, 117, 0.925);
-    height: 750px;
-}
-
-.table {
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.cell-size {
-    width: 35px;
-    height: 35px;
-}
-
-.hint-btn {
-    position: relative;
-    margin-top: 10px;
-    transition: 0.3s ease-in-out;
-}
-
 .pink-square {
     top: 10px;
-    width: 200px;
+    width: 12vw;
     height: 200px;
     background-color: pink;
     opacity: 0.5;
@@ -168,7 +187,7 @@ body {
 .green-square {
     right: 10px;
     bottom: 10px;
-    width: 200px;
+    width: 12vw;
     height: 200px;
     background-color: rgb(90, 146, 94);
     opacity: 0.5;
@@ -177,7 +196,7 @@ body {
 .blue-square {
     left: 50px;
     top: 125px;
-    width: 200px;
+    width: 12vw;
     height: 200px;
     background-color: rgb(96, 155, 194);
     opacity: 0.5;
@@ -186,7 +205,7 @@ body {
 .black-square {
     right: 150px;
     bottom: 150px;
-    width: 200px;
+    width: 12vw;
     height: 200px;
     background-color: rgb(71, 74, 77);
     opacity: 0.5;
@@ -195,7 +214,7 @@ body {
 .yellow-square {
     left: 150px;
     bottom: 250px;
-    width: 200px;
+    width: 12vw;
     height: 200px;
     background-color: rgb(195, 211, 123);
     opacity: 0.5;
@@ -221,6 +240,3 @@ body {
     opacity: 0.5;
 }
 
-.absolute {
-    position: absolute;
-}

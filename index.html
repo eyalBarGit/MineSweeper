@@ -9,29 +9,20 @@
 </head>
 
 <body oncontextmenu="return false;" onload="initGame()">
-    <img style="z-index: -1; position: absolute; width:100%; " src="images/background.png">
+    <img style="z-index: -1; position: absolute; width:100vw; " src="images/background.png">
     <div class="main-container">
 
-        <!-- Squares and Circels -->
-        <div class="game-over-modal border absolute">You Lose!</div>
-        <div class="win-modal border absolute">You Win!</div>
-        <div class="pink-square border transition absolute"></div>
-        <div class="green-square border transition absolute"></div>
-        <div class="blue-square border transition absolute"></div>
-        <div class="black-square border transition absolute"></div>
-        <div class="yellow-square border transition absolute"></div>
-        <div class="pink-round border transition absolute"></div>
-        <div class="green-round border transition absolute"></div>
 
-        <!-- Board Container -->
+ 
         <div class="container center border ">
-            <div class="game-board border">
-                <div class="top-btns center">
-                    <button onclick="getDiffucultyLevel(4, 2)">EASY</button>
-                    <button onclick="getDiffucultyLevel(8, 12)">MEDIUM</button>
-                    <button onclick="getDiffucultyLevel(12,30)">EXPERT</button>
-                    <div class="score inline">Score</div>
-                </div>
+                   <!-- Board Container -->
+        <div class="top-btns center absolute">
+            <button onclick="getDiffucultyLevel(4, 2)">EASY</button>
+            <button onclick="getDiffucultyLevel(8, 12)">MEDIUM</button>
+            <button onclick="getDiffucultyLevel(12,30)">EXPERT</button>
+        </div>
+        <div class="score inline">Score</div>
+            <div class="game-board border center">
 
                 <!-- Hint Buttons -->
                 <button class="new-game" onclick="newGame()"></button>
@@ -43,11 +34,7 @@
                     <img style="width:30px;" class="hint-btn inline" onclick="getHint( gBoard,this)"
                         src="images/hint.png"></img>
                 </div>
-                <div class="lives">
-                    <img class="heart-lives" style="width:50px;" src="images/heart.png" alt="" srcset="">
-                    <img class="heart-lives" style="width:50px;" src="images/heart.png" alt="" srcset="">
-                    <img class="heart-lives" style="width:50px;" src="images/heart.png" alt="" srcset="">
-                </div>
+                <div class="lives"></div>
 
                 <!-- Timer Section -->
                 <div class="timer inline"><span class="white">TIME:</span> <span class="white"
@@ -65,6 +52,17 @@
             </div>
         </div>
     </div>
+    
+        <!-- Squares and Circels -->
+        <div class="game-over-modal border absolute">You Lose!</div>
+        <div class="win-modal border absolute">You Win!</div>
+        <div class="pink-square border transition absolute"></div>
+        <div class="green-square border transition absolute"></div>
+        <div class="blue-square border transition absolute"></div>
+        <div class="black-square border transition absolute"></div>
+        <div class="yellow-square border transition absolute"></div>
+        <div class="pink-round border transition absolute"></div>
+        <div class="green-round border transition absolute"></div>
 
     <script src="js/init-game.js"></script>
     <script src="js/util.js"></script>

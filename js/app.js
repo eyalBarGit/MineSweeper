@@ -31,7 +31,9 @@ const SAD_FACE = `${IMG_SRC}images/sadFace.jpg"</img>`
 
 /************************************************************************* - GET HINT SECTION - ************************************************************/
 function getHint(board, elBtn) {
+    var hintSound = new Audio('audio/hint.mp3')
     if (gGame.isOn) {
+        hintSound.play();
         if (gHintCounter >= 0) {
             elBtn.classList.add('hidden');
             gHintCounter--
@@ -280,7 +282,7 @@ function cellMarked(i, j) {
 /********************************************************************** - EXPAND EMPTY CELLS- *********************************************************************/
 
 
-function expandShown(board, cellI, cellJ, elCell) {
+function expandShown(board, cellI, cellJ) {
 
     for (var i = cellI - 1; i <= cellI + 1; i++) {
         if (i < 0 || i >= board.length) continue;
@@ -292,8 +294,6 @@ function expandShown(board, cellI, cellJ, elCell) {
                 board[i][j].isShown = true;
                 gGame.shownCount++
                 renderBoard(gBoard)
-
-
             }
 
         }

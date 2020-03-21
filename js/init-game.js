@@ -40,6 +40,7 @@ function initGame() {
     renderScore()
     changeSmileyIcon()
     clearModal()
+    renderHearts()
 }
 
 
@@ -93,4 +94,19 @@ function getDiffucultyLevel(cellCount, numOfMines) {
     }
     initGame()
 
+}
+
+
+function renderHearts(){
+    var strHtml = '';
+    for (let i = 0; i < gLives; i++) {
+      
+        strHtml +=` 
+       <img class="heart-lives" style="width:50px;" src="images/heart.png" alt="" srcset="">`
+        
+    }
+    // <img class="heart-lives" style="width:50px;" src="images/heart.png" alt="" srcset="">
+    // <img class="heart-lives" style="width:50px;" src="images/heart.png" alt="" srcset="">`
+    var lives = document.querySelector('.lives');
+    lives.innerHTML = strHtml;
 }
