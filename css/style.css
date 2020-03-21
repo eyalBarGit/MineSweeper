@@ -219,6 +219,14 @@ body {
     background-color: rgb(195, 211, 123);
     opacity: 0.5;
 }
+.orange-square {
+    right: 50px;
+    top: 50px;
+    width: 12vw;
+    height: 200px;
+    background-color: rgb(255, 205, 40);
+    opacity: 0.5;
+}
 
 .pink-round {
     left: 60px;
