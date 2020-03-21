@@ -2,10 +2,28 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url("/images/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-container {
+    border-right: 20px solid black;
+}
+
 .center {
     text-align: center;
     align-items: center;
     margin: auto;
+}
+
+.transition {
+    transition: 0.3s ease-in-out;
+}
+
+.white {
+    color: white;
 }
 
 .inline {
@@ -13,19 +31,120 @@
 }
 
 .hidden {
+    transform: scale(1.4);
+    border-radius: 50%;
+    background-color: yellowgreen;
+    opacity: 0;
+}
+
+.mineShowed {
+    background-color: red;
+}
+
+.win-modal {
+    position: absolute;
+    width: 50vw;
+    height: 20vh;
+    left: 25vw;
+    top: 75vh;
+    padding-top: 50px;
+    transition: 1s ease-in-out;
+    background-color: lightgreen;
     display: none;
+    opacity: 0;
+    font-size: 60px;
+    text-align: center;
+    box-shadow: 22px 28px 52px #000000;
+}
+
+.game-over-modal {
+    position: absolute;
+    width: 50vw;
+    height: 20vh;
+    left: 25vw;
+    top: 75vh;
+    padding-top: 50px;
+    transition: 0.3s ease-in-out;
+    background-color: rgb(223, 85, 67);
+    display: none;
+    opacity: 0;
+    font-size: 60px;
+    text-align: center;
+    box-shadow: 22px 28px 52px #000000;
+}
+
+.safe-to-click {
+    position: relative;
+    margin: 10px 450px 0 450px;
+    height: 40px;
+    padding-top: 10px;
+    transition: 0.2s ease-in-out;
+    background-color: rgba(67, 205, 223, 0.349);
+    border:1px solid yellowgreen;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 22px 28px 52px #000000;
+}
+
+.top-btns button {
+    margin-top: 50px;
+    box-shadow: inset 0px 1px 3px 0px #91b8b3;
+    background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color: #768d87;
+    border-radius: 5px;
+    border: 1px solid #566963;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 11px 23px;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px #2b665e;
+    margin-bottom: 20px;
+    
+}
+
+.top-btns button:hover {
+    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color: #6c7c7c;
+}
+
+.top-btns button:active {
+    position: relative;
+    top: 1px;
+}
+
+.score {
+    font-size: 20px;
+}
+
+.border {
+    border-radius: 20px;
 }
 
 .container {
-    margin-top: 50px;
-    margin-left: 350px;
-    margin-right: 350px;
-    padding: 50px 300px 300px 300px;
-    
+    padding-top: 20px;
+    margin: 0 200px 0 200px;
+    background-color: rgb(70, 68, 66);
+    height: 500px;
+    -moz-box-shadow: 22px 28px 5px #000000;
+    -webkit-box-shadow: 22px 28px 5px #000000;
+    box-shadow: 22px 28px 52px #000000;
+}
+
+.game-board {
+    margin-top: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: rgba(84, 109, 117, 0.925);
+    height:750px;
 }
 
 .table {
     border-collapse: collapse;
+    margin-top: 10px;
 }
 
 .cell-size {
@@ -33,24 +152,79 @@
     height: 35px;
 }
 
-.top-btns {
-    background-color: rgb(70, 173, 207);
-    width: 60%;
-    height: 50px;
-    /* margin: auto; */
+
+.hint-btn {
+    position: relative;
+  
+    margin-top: 10px;
+    transition: 0.3s ease-in-out;
 }
 
-.top-btns button {
-    margin-top: 12px;
-}
-
-
-.game-over{
-    display:none;
-    width:400px;
-    height:500px;
-    margin-left:700px;
-    position:absolute;
+.pink-square {
+    top: 10px;
+    width: 200px;
+    height: 200px;
     background-color: pink;
-    transition: 1s ease-in-out;
+    opacity: 0.5;
+}
+
+.green-square {
+    right: 10px;
+    bottom: 10px;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(90, 146, 94);
+    opacity: 0.5;
+}
+
+.blue-square {
+    left: 50px;
+    top: 125px;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(96, 155, 194);
+    opacity: 0.5;
+}
+
+.black-square {
+    right: 150px;
+    bottom: 150px;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(71, 74, 77);
+    opacity: 0.5;
+}
+
+.yellow-square {
+    left: 150px;
+    bottom: 250px;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(195, 211, 123);
+    opacity: 0.5;
+}
+
+.pink-round {
+    left: 60px;
+    bottom: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgb(207, 123, 182);
+    opacity: 0.5;
+}
+
+.green-round {
+    left: 180px;
+    bottom: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgb(62, 190, 100);
+    opacity: 0.5;
+}
+
+
+.absolute{
+    position: absolute;
 }

@@ -8,33 +8,58 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload="initGame()">
-<div class="game-over"></div>
-    <div class="container center">
-        <div class="top-btns center">
-            <button onclick="getDiffucultyLevel(4, 2)">EASY</button>
-            <button onclick="getDiffucultyLevel(8, 12)">MEDIUM</button>
-            <button onclick="getDiffucultyLevel(12,30)">EXPERT</button>
-            <div class="score inline">Score</div>
+<body oncontextmenu="return false;" onload="initGame()">
+    <div class="main-container">
+
+        <!-- Squares and Circels -->
+        <div class="game-over-modal border absolute">You Lose!</div>
+        <div class="win-modal border absolute">You Win!</div>
+        <div class="pink-square border transition absolute"></div>
+        <div class="green-square border transition absolute"></div>
+        <div class="blue-square border transition absolute"></div>
+        <div class="black-square border transition absolute"></div>
+        <div class="yellow-square border transition absolute"></div>
+        <div class="pink-round border transition absolute"></div>
+        <div class="green-round border transition absolute"></div>
+
+        <!-- Board Container -->
+        <div class="container center border ">
+            <div class="game-board border">
+                <div class="top-btns center">
+                    <button onclick="getDiffucultyLevel(4, 2)">EASY</button>
+                    <button onclick="getDiffucultyLevel(8, 12)">MEDIUM</button>
+                    <button onclick="getDiffucultyLevel(12,30)">EXPERT</button>
+                    <div class="score inline">Score</div>
+                </div>
+
+                <!-- Hint Buttons -->
+                <button class="new-game" onclick="newGame()"></button>
+                <div class="hint-btns-section center">
+                    <img style="width:30px;" class="hint-btn inline" onclick="getHint(gBoard,this)"
+                        src="images/hint.png"></img>
+                    <img style="width:30px;" class="hint-btn inline" onclick="getHint(gBoard,this)"
+                        src="images/hint.png"></img>
+                    <img style="width:30px;" class="hint-btn inline" onclick="getHint( gBoard,this)"
+                        src="images/hint.png"></img>
+
+                    </div>
+                    <!-- Timer Section -->
+                    <div class="timer inline"><span class="white">TIME:</span> <span class="white" id="time-min"></span><span
+                            class="white" id="time-sec"></span> </div>
+                <!-- Mine Tabel -->
+                <div>
+                    <table class="table center" border="2">
+                        <tbody class="board"></tbody>
+                    </table>
+
+                    <div class="safe-to-click border">Safe to click </div>
+
+                </div>
+            </div>
         </div>
-
-
-        <button class="new-game" onclick="newGame()"></button>
-        <div class="hint-btns-section center">
-            <img style="width:30px;" class="hint-btn inline" onclick="getHint(gBoard,this)" src="images/hint.png"></img>
-            <img style="width:30px;" class="hint-btn inline" onclick="getHint(gBoard,this)" src="images/hint.png"></img>
-            <img style="width:30px;" class="hint-btn inline" onclick="getHint( gBoard,this)" src="images/hint.png"></img>
-            <div class="inline">TIME: <span id="time-min"></span><span id="time-sec"></span> </div>
-        </div>
-
-        <table  class="table center" border="2" >
-            <tbody class="board"></tbody>
-        </table>
-
-        <div class="timer inline"></div>
     </div>
 
-
+    <script src="js/init-game.js"></script>
     <script src="js/util.js"></script>
     <script src="js/app.js"></script>
 </body>

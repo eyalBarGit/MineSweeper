@@ -1,12 +1,6 @@
 'use-strict';
 
 
-function renderCell(location, value) {
-  // Select the elCell and set the value
-  var elCell = document.getElementById(`cell-${location.i}-${location.j}`);
-  elCell.innerHTML = value;
-}
-
 function getRandomInt(min, max) {
 
   var res = Math.floor(Math.random() * (max - min)) + min
@@ -14,21 +8,6 @@ function getRandomInt(min, max) {
 }
 
 
-function getClassName(location) {
-  var cellClass = 'cell-' + location.i + '-' + location.j;
-  return cellClass;
-}
-
-
-
-
-
-// LOOK 1 CELL UP AND  1 CELL DOWN
-// IF THERE IS NO MORE SPACE TO GO UP OR DOWN, SKIP THIS ITERATION
-// LOOK 1 CELL LEFT AND 1 CELL RIGHT
-// IF YOU ARE ON THE SAME COORDS, SKIP ITTERATION
-// IF THERE IS NO MORE SPACE TO GO LEFT OR RIGHT, SKIP THIS ITERATION
-// IF YOU FIND A CELL THAT HAS ISMINE.TRUE = PUSH IT TO THE RES
 function setMinesNegsCount(cellI, cellJ, mat) {
   for (var i = cellI - 1; i <= cellI + 1; i++) {
     if (i < 0 || i >= mat.length) continue;
@@ -43,22 +22,21 @@ function setMinesNegsCount(cellI, cellJ, mat) {
 }
 
 
-
-
 function renderCell(location, value) {
   var elCell = document.getElementById(`cell-${location.i}-${location.j}`);
   elCell.innerHTML = value;
 }
 
 
-
+/******************************************* - HINT FUNCTION SECTION - **********************************/
 
 function getMinesLocation(cellI, cellJ, mat) {
   for (var i = cellI - 1; i <= cellI + 1; i++) {
     if (i < 0 || i >= mat.length) continue;
     for (var j = cellJ - 1; j <= cellJ + 1; j++) {
-      if (mat[cellJ][cellJ].isShown) continue;
       if (j < 0 || j >= mat[i].length) continue;
+      if (mat[i][j].isShown) continue;
+      if (mat[cellI][cellJ].isShown) continue;
       gHintedCells.push(mat[i][j])
     }
   }
@@ -71,10 +49,9 @@ function getMinesLocation(cellI, cellJ, mat) {
 
 }
 
-
-function hideCards() {
-
+function hideCards(cellI,cellJ) {
   for (var i = 0; i < gHintedCells.length; i++) {
+    if(i === cellI && j === cellJ)continue;
     var cell = gHintedCells[i];
     cell.isShown = false;
   }
@@ -84,8 +61,6 @@ function hideCards() {
   renderBoard(gBoard);
 }
 
-
-
 function initHintBtns() {
   var btnsHint = document.querySelectorAll('.hint-btn');
   for (var i = 0; i < btnsHint.length; i++) {
@@ -94,12 +69,67 @@ function initHintBtns() {
       btn.classList.remove('hidden')
   }
 }
-// Check if game is over
+
+/******************************************* - CHECK GAME OVER - **********************************/
+
+
 function checkGameOver() {
+
+  var cells = gCellCounter - gLevel.MINES;
+
+if(gGame.shownCount === cells){
+  win();
+}
 
 }
 
 
+function renderScore(){
+  var score = document.querySelector('.score');
+  score.innerHTML = `Score: ${gGame.shownCount}`
+  score.style.color = 'white'
+}
 
 
+function showAllMines(board){
+for (var i = 0; i < board.length; i++) {
+  var row = board[i];
+  for (var j = 0; j < row.length; j++) {
+    var  cell = row[j];
+    if(cell.isMine){
+      cell.isShown = true;
+      renderBoard(gBoard);
 
+    }
+  }
+}
+}
+
+function win(){
+  gGame.isOn = false;
+  clearInterval(gTimer)
+  var elWinModal = document.querySelector('.win-modal');
+  elWinModal.style.display = 'block';
+  elWinModal.style.opacity = '1';
+
+}
+
+
+function changeSmileyIcon() {
+  if(gGame.isOn){
+  
+      gBtn.innerHTML = `${SMILEY_FACE}`
+  }
+  }
+  
+function clearModal (){
+  var elWinModal = document.querySelector('.win-modal');
+  elWinModal.style.display = 'none';
+
+  var elWinModal = document.querySelector('.game-over-modal');
+  elWinModal.style.display = 'none';
+
+  var safeClick = document.querySelector('.safe-to-click');
+  safeClick.style.opacity = '0'
+  // safeClick.style.display = 'none'
+}
