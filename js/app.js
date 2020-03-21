@@ -135,17 +135,17 @@ function createMines(board, cellI, cellJ) {
 
     for (var i = 0; i < gLevel.MINES; i++) {
 
-        var iMine = getRandomInt(0, board.length - 1)
-        var jMine = getRandomInt(0, board.length - 1)
-        if (cellI === iMine && cellJ === jMine) {
-            iMine = getRandomInt(0, board.length - 1)
-            jMine = getRandomInt(0, board.length - 1)
+        var randomI = getRandomInt(0, board.length - 1)
+        var randomJ = getRandomInt(0, board.length - 1)
+        if (cellI === randomI && cellJ === randomJ) {
+            randomI = getRandomInt(0, board.length - 1)
+            randomJ = getRandomInt(0, board.length - 1)
 
         }
 
-        if (!board[iMine][jMine].isMine && !board[iMine][jMine].isShown) {
+        if (!board[randomI][randomJ].isMine && !board[randomI][randomJ].isShown) {
 
-            board[iMine][jMine].isMine = true
+            board[randomI][randomJ].isMine = true
         }
 
     }
