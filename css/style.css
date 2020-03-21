@@ -1,4 +1,5 @@
 /*****************************************************************- INIT - *************************************************** */
+
 * {
     box-sizing: border-box;
 }
@@ -15,10 +16,10 @@ body {
     border-radius: 20px;
 }
 
-
 .absolute {
     position: absolute;
 }
+
 .center {
     text-align: center;
     align-items: center;
@@ -48,14 +49,12 @@ body {
     background-color: red;
 }
 
-
 /******************************************************************** -  HTML CLASSES *******************************************/
 
 .main-container {
     padding: 0 100px 0 100px;
     margin: 50px 0 0 0;
     position: relative;
-
 }
 
 .container {
@@ -63,6 +62,7 @@ body {
     padding-top: 20px;
     padding-left: 100px;
     padding-right: 100px;
+    padding-bottom: 100px;
     width: 55vw;
     background-color: rgb(70, 68, 66);
     height: 300px;
@@ -72,9 +72,9 @@ body {
 }
 
 .top-btns {
- 
     left: 0;
 }
+
 .top-btns button {
     box-shadow: inset 0px 1px 3px 0px #91b8b3;
     background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
@@ -107,11 +107,14 @@ body {
     margin-top: 50px;
     padding-top: 20px;
     background-color: rgba(84, 109, 117, 0.925);
+    width: 550px;
     height: 700px;
 }
-.lives{
-    height:50px
+
+.lives {
+    height: 50px
 }
+
 .table {
     border-collapse: collapse;
     margin-top: 10px;
@@ -122,9 +125,10 @@ body {
     margin-top: 10px;
     transition: 0.3s ease-in-out;
 }
+
 .cell-size {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 }
 
 .safe-to-click {
@@ -140,9 +144,7 @@ body {
     box-shadow: 22px 28px 52px #000000;
 }
 
-
 .win-modal {
- 
     width: 50vw;
     height: 20vh;
     left: 25vw;
@@ -158,7 +160,6 @@ body {
 }
 
 .game-over-modal {
-  
     width: 50vw;
     height: 20vh;
     left: 25vw;
@@ -175,8 +176,8 @@ body {
 
 .pink-square {
     top: 10px;
-    width: 12vw;
-    height: 200px;
+    width: 10vw;
+    height: 180px;
     background-color: pink;
     opacity: 0.5;
 }
@@ -184,8 +185,8 @@ body {
 .green-square {
     right: 10px;
     bottom: 10px;
-    width: 12vw;
-    height: 200px;
+    width: 10vw;
+    height: 180px;
     background-color: rgb(90, 146, 94);
     opacity: 0.5;
 }
@@ -193,8 +194,8 @@ body {
 .blue-square {
     left: 50px;
     top: 125px;
-    width: 12vw;
-    height: 200px;
+    width: 10vw;
+    height: 180px;
     background-color: rgb(96, 155, 194);
     opacity: 0.5;
 }
@@ -202,8 +203,8 @@ body {
 .black-square {
     right: 150px;
     bottom: 150px;
-    width: 12vw;
-    height: 200px;
+    width: 10vw;
+    height: 180px;
     background-color: rgb(71, 74, 77);
     opacity: 0.5;
 }
@@ -211,16 +212,17 @@ body {
 .yellow-square {
     left: 150px;
     bottom: 250px;
-    width: 12vw;
-    height: 200px;
+    width: 10vw;
+    height: 180px;
     background-color: rgb(195, 211, 123);
     opacity: 0.5;
 }
+
 .orange-square {
     right: 50px;
     top: 50px;
-    width: 12vw;
-    height: 200px;
+    width: 10vw;
+    height: 180px;
     background-color: rgb(255, 205, 40);
     opacity: 0.5;
 }
@@ -244,4 +246,3 @@ body {
     background-color: rgb(62, 190, 100);
     opacity: 0.5;
 }
-
