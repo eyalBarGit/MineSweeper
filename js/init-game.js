@@ -105,8 +105,6 @@ function renderHearts(){
        <img class="heart-lives" style="width:50px;" src="images/heart.png" alt="" srcset="">`
         
     }
-    // <img class="heart-lives" style="width:50px;" src="images/heart.png" alt="" srcset="">
-    // <img class="heart-lives" style="width:50px;" src="images/heart.png" alt="" srcset="">`
     var lives = document.querySelector('.lives');
     lives.innerHTML = strHtml;
 }

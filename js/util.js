@@ -131,5 +131,4 @@ function clearModal() {
 
   var safeClick = document.querySelector('.safe-to-click');
   safeClick.style.opacity = '0'
-  // safeClick.style.display = 'none'
 }

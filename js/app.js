@@ -1,13 +1,4 @@
 'use-strict';
-//TODOS:
-/**
- * step 3, 3 = Implement that clicking a cell with “number” reveals the number of this cell
- * Furthur task - Make sure the first clicked cell is never a mine (like in the real game), the empty cell becomes a num
- * 
- * 
-*/
-
-
 
 /************************************************************* - IMG STOCK  - ****************************************************/
 const IMG_SRC = `<img class="cell-size" src="`
@@ -43,7 +34,6 @@ function getHint(board, elBtn) {
             setTimeout(clearModal, 1500)
         }
     }
-    // safeClick.style.display = 'block';
 
 }
 
@@ -203,7 +193,6 @@ function cellClicked(elCell, i, j) {
             if (!cell.isMine) {
                 if (cell.minesAroundCount === 0) {
                     expandShown(gBoard, i, j)
-                    // gGame.shownCount++
                 }
                 clickSound.play()
                 gGame.shownCount++
@@ -213,33 +202,26 @@ function cellClicked(elCell, i, j) {
             cell.isShown = true;
             if (cell.isMine) {
                 explosion.play()
-                // debugger
                 if (gLives > 0) {
-                    // debugger
                     switch (gLives) {
                         case 3:
                             heart[2].style.display = 'none'
                             gLives--
                             break;
-                            case 2:
-                                gLives--
-                                heart[1].style.display = 'none'
-                                break;
-                                case 1:
-                                    heart[0].style.display = 'none'
-                                    gLives--
-                                        gGame.isOn = false;
-                    
-                                        setTimeout(GameOver, 500);
+                        case 2:
+                            gLives--
+                            heart[1].style.display = 'none'
+                            break;
+                        case 1:
+                            heart[0].style.display = 'none'
+                            gLives--
+                            gGame.isOn = false;
+
+                            setTimeout(GameOver, 500);
                             break;
                     }
                 }
-                //  else {
-                    
-                    //     gGame.isOn = false;
-    
-                    //     setTimeout(GameOver, 1500);
-                // }
+
             }
 
         } else {
