@@ -196,13 +196,14 @@ function cellClicked(elCell, i, j) {
                     expandShown(gBoard, i, j)
                 }
                 clickSound.play()
+                
                 gGame.shownCount++
                 renderScore()
-
             }
             cell.isShown = true;
             if (cell.isMine) {
                 explosion.play()
+                gShownMines++;
                 if (gLives > 0) {
                     switch (gLives) {
                         case 3:
@@ -218,7 +219,7 @@ function cellClicked(elCell, i, j) {
                             gLives--
                             gGame.isOn = false;
 
-                            setTimeout(GameOver, 500);
+                            setTimeout(gameOver, 500);
                             break;
                     }
                 }
@@ -232,7 +233,6 @@ function cellClicked(elCell, i, j) {
         renderBoard(gBoard);
 
     }
-
     checkGameOver()
 
 }
@@ -275,12 +275,11 @@ function expandShown(board, cellI, cellJ) {
             if (j < 0 || j >= board[i].length) continue;
             if (board[i][j].minesAroundCount >= 0 && !board[i][j].isMine && !board[i][j].isShown) {
                 board[i][j].isShown = true;
+            
                 gGame.shownCount++
-                if(board[cellI][cellJ].minesAroundCount <= 4 && !board[cellI][cellJ].isMine && !board[cellI][cellJ].isShown)
-                expandShown(gBoard, i, j);
-                // renderBoard(gBoard)
+                
             }
-
+            
         }
     }
 }

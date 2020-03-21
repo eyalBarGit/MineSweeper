@@ -22,7 +22,7 @@ var gHintCounter;
 var gBtn;
 var gCellCounter = 0;
 var gLives = 3;
-
+var gShownMines =0;
 /************************************************************* -  INITIALIZE THE GAME - *******************************************************/
 function initGame() {
     gGame.isOn = true;
@@ -36,6 +36,7 @@ function initGame() {
     gHint = false;
     gGame.secsPassed = 0;
     gLives = 3;
+    gShownMines=0
     renderTime(gGame.secsPassed)
     renderScore()
     changeSmileyIcon()
@@ -52,7 +53,7 @@ function newGame() {
 }
 
 
-function GameOver() {
+function gameOver() {
     gGame.isOn = false;
     gBtn.innerHTML = `${SAD_FACE}`
     showAllMines(gBoard);

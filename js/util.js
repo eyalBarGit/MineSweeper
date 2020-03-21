@@ -81,6 +81,10 @@ function checkGameOver() {
     win();
   }
 
+  if(gShownMines === gLevel.MINES){
+    gameOver();
+  }
+  
 }
 
 
